@@ -4,6 +4,10 @@ const MemeGenerator = () => {
   const [memes, setMemes] = useState([]);
   const [loading, setLoading] = useState(true);
   const [currentMeme, setCurrentMeme] = useState("");
+  const [forms, setForms] = useState({
+    topText: "",
+    bottomText: "",
+  });
 
   const randomNumber = (myMin, myMax) => {
     return Math.floor(
@@ -31,10 +35,38 @@ const MemeGenerator = () => {
     }
   }, [currentMeme]);
 
+  const handleForm = (event) => {
+    const { name, value } = event.target;
+
+    setForms({
+      ...forms,
+      [name]: value,
+    });
+  };
+
   if (!loading) {
     return (
       <div>
         <h1>MEME</h1>
+
+        <input
+          type="text"
+          placeholder="Top text"
+          name="topText"
+          value={forms.topText}
+          onChange={handleForm}
+        />
+
+        <input
+          type="text"
+          placeholder="Bottom text"
+          name="bottomText"
+          value={forms.bottomText}
+          onChange={handleForm}
+        />
+
+        <p>Top text: {forms.topText}</p>
+        <p>Bottom text: {forms.bottomText}</p>
 
         <img
           src={currentMeme.url}
