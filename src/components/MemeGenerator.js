@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 const MemeGenerator = () => {
   const [memes, setMemes] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [currentMeme, setCurrentMeme] = useState("");
 
   const randomNumber = (myMin, myMax) => {
     return Math.floor(
@@ -15,15 +16,31 @@ const MemeGenerator = () => {
       .then((response) => response.json())
       .then((response) => {
         setMemes(response.data.memes);
-        console.log(response.data, memes);
-        setLoading(false);
       });
   }, []);
+
+  useEffect(() => {
+    if (memes !== undefined || memes.length === 0) {
+      setCurrentMeme(memes[randomNumber(0, memes.length - 1)]);
+    }
+  }, [memes]);
+
+  useEffect(() => {
+    if (typeof currentMeme === "object") {
+      setLoading(false);
+    }
+  }, [currentMeme]);
 
   if (!loading) {
     return (
       <div>
-        <h1>MEME {memes[randomNumber(0, memes.length - 1)].name}</h1>
+        <h1>MEME</h1>
+        <img
+          src={currentMeme.url}
+          height={currentMeme.height}
+          width={currentMeme.width}
+          alt="meme"
+        />
       </div>
     );
   } else {
@@ -36,3 +53,10 @@ const MemeGenerator = () => {
 };
 
 export default MemeGenerator;
+
+// <img
+//   src={currentMeme.url}
+//   height={currentMeme.height}
+//   width={currentMeme.width}
+//   alt="meme"
+// />;
