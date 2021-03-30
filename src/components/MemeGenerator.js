@@ -20,7 +20,7 @@ const MemeGenerator = () => {
   }, []);
 
   useEffect(() => {
-    if (memes !== undefined || memes.length === 0) {
+    if (memes !== undefined || memes.length !== 0) {
       setCurrentMeme(memes[randomNumber(0, memes.length - 1)]);
     }
   }, [memes]);
@@ -35,6 +35,7 @@ const MemeGenerator = () => {
     return (
       <div>
         <h1>MEME</h1>
+
         <img
           src={currentMeme.url}
           height={currentMeme.height}
@@ -53,10 +54,3 @@ const MemeGenerator = () => {
 };
 
 export default MemeGenerator;
-
-// <img
-//   src={currentMeme.url}
-//   height={currentMeme.height}
-//   width={currentMeme.width}
-//   alt="meme"
-// />;
