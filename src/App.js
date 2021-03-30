@@ -1,9 +1,11 @@
-function App() {
+import MemeGenerator from "./components/MemeGenerator";
+
+const App = () => {
   return (
     <div>
-      <h1>APP</h1>
+      <MemeGenerator />
     </div>
   );
-}
+};
 
 export default App;
