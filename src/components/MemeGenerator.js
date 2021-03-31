@@ -55,21 +55,31 @@ const MemeGenerator = () => {
           <h1 id="main-title">MEME Generator</h1>
         </div>
 
-        <input
-          type="text"
-          placeholder="Top text"
-          name="topText"
-          value={forms.topText}
-          onChange={handleForm}
-        />
+        <div className="input-container">
+          <label className="meme-label">
+            Top text:
+            <input
+              className="meme-input"
+              type="text"
+              placeholder="Top text"
+              name="topText"
+              value={forms.topText}
+              onChange={handleForm}
+            />
+          </label>
 
-        <input
-          type="text"
-          placeholder="Bottom text"
-          name="bottomText"
-          value={forms.bottomText}
-          onChange={handleForm}
-        />
+          <label className="meme-label">
+            Bottom Text:
+            <input
+              className="meme-input"
+              type="text"
+              placeholder="Bottom text"
+              name="bottomText"
+              value={forms.bottomText}
+              onChange={handleForm}
+            />
+          </label>
+        </div>
 
         <div id="image-div">
           <p id="top-text" className="meme-text">
