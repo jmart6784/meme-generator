@@ -5,13 +5,48 @@
 
 * {
   font-family: "meme", sans-serif;
-  font-size: 40px;
   color: white;
   text-shadow: 2px 2px 0 #000, -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 0 2px 0 #000, 2px 0 0 #000, 0 -2px 0 #000, -2px 0 0 #000, 2px 2px 5px #000;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+#top-div {
+  background: black;
+  background: -webkit-gradient(linear, left top, right top, from(#0943af), to(#30007e));
+  background: linear-gradient(to right, #0943af, #30007e);
+  padding: 20px 20px 20px 20px;
+  margin-bottom: 100px;
+  width: 100%;
+}
+
+body {
+  background: #202020;
+  background: -webkit-gradient(linear, left top, right top, from(#833ab4), color-stop(#fd1d1d), to(#fcb045));
+  background: linear-gradient(to right, #833ab4, #fd1d1d, #fcb045);
+  background-repeat: no-repeat, repeat;
+  background-size: cover;
+  background-position: center center;
+  height: 100vh;
+}
+
+#meme-gen-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 #image-div {
-  border: 5px solid red;
   position: relative;
   width: -webkit-fit-content;
   width: -moz-fit-content;
@@ -42,8 +77,8 @@
 
 .meme-image {
   display: block;
-  max-width: 500px;
-  max-height: 500px;
+  max-width: 700px;
+  max-height: 700px;
   width: auto;
   height: auto;
 }

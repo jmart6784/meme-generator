@@ -50,11 +50,10 @@ const MemeGenerator = () => {
 
   if (!loading) {
     return (
-      <div>
-        <h1>MEME Generator</h1>
-        <p>
-          width: {currentMeme.width}px height: {currentMeme.height}px
-        </p>
+      <div id="meme-gen-container">
+        <div id="top-div">
+          <h1 id="main-title">MEME Generator</h1>
+        </div>
 
         <input
           type="text"
@@ -81,7 +80,6 @@ const MemeGenerator = () => {
           </p>
 
           <img
-            id="main-img"
             className="meme-image"
             src={currentMeme.url}
             height={currentMeme.height}
