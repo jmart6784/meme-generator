@@ -1,1 +1,55 @@
+@font-face {
+  font-family: "meme";
+  src: url("./meme.ttf") format("embedded-opentype"),
+    url("./meme.ttf") format("woff2"), url("./meme.ttf") format("woff"),
+    url("./meme.ttf") format("truetype"), url("./meme.ttf") format("svg");
+}
 
+* {
+  font-family: "meme", sans-serif;
+  font-size: 40px;
+  color: white;
+  text-shadow: 2px 2px 0 #000, -2px -2px 0 #000, 2px -2px 0 #000,
+    -2px 2px 0 #000, 0 2px 0 #000, 2px 0 0 #000, 0 -2px 0 #000, -2px 0 0 #000,
+    2px 2px 5px #000;
+}
+
+#image-div {
+  border: 5px solid red;
+  position: relative;
+  width: fit-content;
+}
+
+#top-text {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 10;
+}
+
+#bottom-text {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  z-index: 10;
+}
+
+.meme-text {
+  margin: 0px;
+  width: 100%;
+  text-align: center;
+  font-size: 30px;
+  margin: 10px 0 10px 0;
+}
+
+// #main-img {
+
+// }
+
+.meme-image {
+  display: block;
+  max-width: 500px;
+  max-height: 500px;
+  width: auto;
+  height: auto;
+}

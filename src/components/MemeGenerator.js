@@ -15,6 +15,7 @@ const MemeGenerator = () => {
     );
   };
 
+  // Set memes state array through API call
   useEffect(() => {
     fetch("https://api.imgflip.com/get_memes")
       .then((response) => response.json())
@@ -23,18 +24,21 @@ const MemeGenerator = () => {
       });
   }, []);
 
+  // Set Random meme image when API call is Done
   useEffect(() => {
     if (memes !== undefined || memes.length !== 0) {
       setCurrentMeme(memes[randomNumber(0, memes.length - 1)]);
     }
   }, [memes]);
 
+  // Stop loading status when current meme is set
   useEffect(() => {
     if (typeof currentMeme === "object") {
       setLoading(false);
     }
   }, [currentMeme]);
 
+  // Handle text input forms
   const handleForm = (event) => {
     const { name, value } = event.target;
 
@@ -47,7 +51,10 @@ const MemeGenerator = () => {
   if (!loading) {
     return (
       <div>
-        <h1>MEME</h1>
+        <h1>MEME Generator</h1>
+        <p>
+          width: {currentMeme.width}px height: {currentMeme.height}px
+        </p>
 
         <input
           type="text"
@@ -65,15 +72,23 @@ const MemeGenerator = () => {
           onChange={handleForm}
         />
 
-        <p>Top text: {forms.topText}</p>
-        <p>Bottom text: {forms.bottomText}</p>
+        <div id="image-div">
+          <p id="top-text" className="meme-text">
+            Top text: {forms.topText}
+          </p>
+          <p id="bottom-text" className="meme-text">
+            Bottom text: {forms.bottomText}
+          </p>
 
-        <img
-          src={currentMeme.url}
-          height={currentMeme.height}
-          width={currentMeme.width}
-          alt="meme"
-        />
+          <img
+            id="main-img"
+            className="meme-image"
+            src={currentMeme.url}
+            height={currentMeme.height}
+            width={currentMeme.width}
+            alt="meme"
+          />
+        </div>
       </div>
     );
   } else {
