@@ -7,6 +7,7 @@ const MemeGenerator = () => {
   const [forms, setForms] = useState({
     topText: "",
     bottomText: "",
+    textSize: "30",
   });
 
   const randomNumber = (myMin, myMax) => {
@@ -46,6 +47,8 @@ const MemeGenerator = () => {
   const handleForm = (event) => {
     const { name, value } = event.target;
 
+    console.log(`NAME: ${name}, VALUE: ${value}`);
+
     setForms({
       ...forms,
       [name]: value,
@@ -84,17 +87,34 @@ const MemeGenerator = () => {
             />
           </label>
 
+          <label>
+            <input
+              type="number"
+              name="textSize"
+              value={forms.textSize}
+              onChange={handleForm}
+            />
+          </label>
+
           <button className="ui-btn" onClick={randomMeme}>
             Random
           </button>
         </div>
 
         <div id="image-div">
-          <p id="top-text" className="meme-text">
+          <p
+            id="top-text"
+            className="meme-text"
+            style={{ fontSize: `${forms.textSize}px` }}
+          >
             Top text: {forms.topText}
           </p>
 
-          <p id="bottom-text" className="meme-text">
+          <p
+            id="bottom-text"
+            className="meme-text"
+            style={{ fontSize: `${forms.textSize}px` }}
+          >
             Bottom text: {forms.bottomText}
           </p>
 
