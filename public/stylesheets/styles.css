@@ -17,7 +17,7 @@
   background: -webkit-gradient(linear, left top, right top, from(#0943af), to(#30007e));
   background: linear-gradient(to right, #0943af, #30007e);
   padding: 20px 20px 20px 20px;
-  margin-bottom: 100px;
+  margin-bottom: 60px;
   width: 100%;
 }
 
@@ -80,6 +80,18 @@ body {
   margin-top: 10px;
 }
 
+.ui-btn {
+  border: 0px;
+  font-size: 25px;
+  padding: 10px;
+  border-radius: 10px;
+  -ms-flex-item-align: end;
+      align-self: flex-end;
+  background: black;
+  background: -webkit-gradient(linear, left top, right top, from(#0943af), to(#30007e));
+  background: linear-gradient(to right, #0943af, #30007e);
+}
+
 .meme-input::-webkit-input-placeholder {
   color: white;
   opacity: 1;
@@ -113,6 +125,7 @@ body {
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
+  word-wrap: break-word;
 }
 
 #top-text {

@@ -15,6 +15,10 @@ const MemeGenerator = () => {
     );
   };
 
+  const randomMeme = () => {
+    setCurrentMeme(memes[randomNumber(0, memes.length - 1)]);
+  };
+
   // Set memes state array through API call
   useEffect(() => {
     fetch("https://api.imgflip.com/get_memes")
@@ -27,7 +31,7 @@ const MemeGenerator = () => {
   // Set Random meme image when API call is Done
   useEffect(() => {
     if (memes !== undefined || memes.length !== 0) {
-      setCurrentMeme(memes[randomNumber(0, memes.length - 1)]);
+      randomMeme();
     }
   }, [memes]);
 
@@ -79,12 +83,17 @@ const MemeGenerator = () => {
               onChange={handleForm}
             />
           </label>
+
+          <button className="ui-btn" onClick={randomMeme}>
+            Random
+          </button>
         </div>
 
         <div id="image-div">
           <p id="top-text" className="meme-text">
             Top text: {forms.topText}
           </p>
+
           <p id="bottom-text" className="meme-text">
             Bottom text: {forms.bottomText}
           </p>

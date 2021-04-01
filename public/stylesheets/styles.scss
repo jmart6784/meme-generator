@@ -15,11 +15,13 @@
   outline: none;
 }
 
+$gradient-purple: linear-gradient(to right, #0943af, #30007e);
+
 #top-div {
   background: black;
-  background: linear-gradient(to right, #0943af, #30007e);
+  background: $gradient-purple;
   padding: 20px 20px 20px 20px;
-  margin-bottom: 100px;
+  margin-bottom: 60px;
   width: 100%;
 }
 
@@ -65,6 +67,16 @@ body {
   margin-top: 10px;
 }
 
+.ui-btn {
+  border: 0px;
+  font-size: 25px;
+  padding: 10px;
+  border-radius: 10px;
+  align-self: flex-end;
+  background: black;
+  background: $gradient-purple;
+}
+
 $placeholderColor: rgb(255, 255, 255);
 
 .meme-input::placeholder {
@@ -83,6 +95,7 @@ $placeholderColor: rgb(255, 255, 255);
 #image-div {
   position: relative;
   width: fit-content;
+  word-wrap: break-word;
 }
 
 #top-text {
