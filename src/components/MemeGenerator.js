@@ -61,12 +61,20 @@ const MemeGenerator = () => {
   const handleForm = (event) => {
     const { name, value } = event.target;
 
-    console.log(`NAME: ${name}, VALUE: ${value}`);
-
-    setForms({
-      ...forms,
-      [name]: value,
-    });
+    if (name === "textSize") {
+      // Limit font size to 10 to 50
+      if (parseInt(value) <= 50 && parseInt(value) >= 10) {
+        setForms({
+          ...forms,
+          [name]: value,
+        });
+      }
+    } else {
+      setForms({
+        ...forms,
+        [name]: value,
+      });
+    }
   };
 
   if (!loading) {
@@ -108,8 +116,6 @@ const MemeGenerator = () => {
               name="textSize"
               value={forms.textSize}
               onChange={handleForm}
-              max="50"
-              min="10"
               className="meme-input"
             />
           </label>
