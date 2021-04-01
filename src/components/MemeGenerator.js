@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import Memu from "./Memu";
 
 const MemeGenerator = () => {
   const [memes, setMemes] = useState([]);
@@ -130,6 +131,7 @@ const MemeGenerator = () => {
             alt="meme"
           />
         </div>
+        <Memu allMemes={JSON.stringify(memes)} />
       </div>
     );
   } else {
