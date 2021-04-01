@@ -21,6 +21,19 @@ const MemeGenerator = () => {
     setCurrentMeme(memes[randomNumber(0, memes.length - 1)]);
   };
 
+  const selectMeme = (meme_id) => {
+    memes.forEach((meme) => {
+      if (meme.id === meme_id) {
+        setCurrentMeme(meme);
+        window.scroll({
+          top: 0,
+          left: 0,
+          behavior: "smooth",
+        });
+      }
+    });
+  };
+
   // Set memes state array through API call
   useEffect(() => {
     fetch("https://api.imgflip.com/get_memes")
@@ -131,7 +144,7 @@ const MemeGenerator = () => {
             alt="meme"
           />
         </div>
-        <Memu allMemes={JSON.stringify(memes)} />
+        <Memu allMemes={JSON.stringify(memes)} sm={selectMeme} />
       </div>
     );
   } else {

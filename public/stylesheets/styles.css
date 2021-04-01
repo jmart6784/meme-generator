@@ -172,6 +172,20 @@
   height: auto;
 }
 
+.memu-title {
+  font-size: 50px;
+  color: white;
+  text-shadow: none;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  text-align: center;
+  margin: auto;
+  margin-top: 100px;
+  margin-bottom: 100px;
+  cursor: pointer;
+}
+
 .meme-image2 {
   display: block;
   max-width: 200px;
@@ -182,7 +196,6 @@
 
 .memu-div {
   width: 100%;
-  margin-top: 100px;
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: 1fr 1fr 1fr 1fr;
@@ -225,6 +238,6 @@
 
 .meme-name {
   font-size: 20px;
-  margin-top: 10px;
+  margin-top: 20px;
 }
 /*# sourceMappingURL=styles.css.map */

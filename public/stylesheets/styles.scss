@@ -142,6 +142,19 @@ $placeholderColor: rgb(255, 255, 255);
   height: auto;
 }
 
+// Memu Component
+.memu-title {
+  font-size: 50px;
+  color: white;
+  text-shadow: none;
+  width: fit-content;
+  text-align: center;
+  margin: auto;
+  margin-top: 100px;
+  margin-bottom: 100px;
+  cursor: pointer;
+}
+
 .meme-image2 {
   display: block;
   max-width: 200px;
@@ -152,7 +165,6 @@ $placeholderColor: rgb(255, 255, 255);
 
 .memu-div {
   width: 100%;
-  margin-top: 100px;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   align-items: center;
@@ -180,5 +192,5 @@ $placeholderColor: rgb(255, 255, 255);
 
 .meme-name {
   font-size: 20px;
-  margin-top: 10px;
+  margin-top: 20px;
 }
