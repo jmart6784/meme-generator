@@ -87,12 +87,16 @@ const MemeGenerator = () => {
             />
           </label>
 
-          <label>
+          <label className="meme-label">
+            Font size:
             <input
               type="number"
               name="textSize"
               value={forms.textSize}
               onChange={handleForm}
+              max="50"
+              min="10"
+              className="meme-input"
             />
           </label>
 
