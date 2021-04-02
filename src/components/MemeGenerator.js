@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Memu from "./Memu";
-import html2canvas, { downloadURI } from "html2canvas";
+import html2canvas from "html2canvas";
 
 const MemeGenerator = () => {
   const [memes, setMemes] = useState([]);
