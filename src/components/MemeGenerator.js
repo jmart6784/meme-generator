@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Memu from "./Memu";
+import html2canvas, { downloadURI } from "html2canvas";
 
 const MemeGenerator = () => {
   const [memes, setMemes] = useState([]);
@@ -15,10 +16,6 @@ const MemeGenerator = () => {
     return Math.floor(
       Math.random() * (Math.ceil(myMax) - Math.floor(myMin) + 1) + myMin
     );
-  };
-
-  const randomMeme = () => {
-    setCurrentMeme(memes[randomNumber(0, memes.length - 1)]);
   };
 
   const selectMeme = (meme_id) => {
@@ -46,7 +43,7 @@ const MemeGenerator = () => {
   // Set Random meme image when API call is Done
   useEffect(() => {
     if (memes !== undefined || memes.length !== 0) {
-      randomMeme();
+      setCurrentMeme(memes[randomNumber(0, memes.length - 1)]);
     }
   }, [memes]);
 
@@ -75,6 +72,39 @@ const MemeGenerator = () => {
         [name]: value,
       });
     }
+  };
+
+  // Generate meme image dowmload link
+  const saveAs = (uri, filename) => {
+    var link = document.createElement("a");
+
+    if (typeof link.download === "string") {
+      link.href = uri;
+      link.download = filename;
+
+      document.body.appendChild(link);
+
+      link.click();
+
+      document.body.removeChild(link);
+    } else {
+      window.open(uri);
+    }
+  };
+
+  // Download meme as image
+  const saveMeme = () => {
+    const memeDiv = document.getElementById("image-div");
+
+    html2canvas(memeDiv, {
+      useCORS: true,
+      scrollX: -window.scrollX,
+      scrollY: -window.scrollY,
+      windowWidth: document.documentElement.offsetWidth,
+      windowHeight: document.documentElement.offsetHeight,
+    }).then((canvas) => {
+      saveAs(canvas.toDataURL(), "meme.png");
+    });
   };
 
   if (!loading) {
@@ -120,8 +150,8 @@ const MemeGenerator = () => {
             />
           </label>
 
-          <button className="ui-btn" onClick={randomMeme}>
-            Random
+          <button className="ui-btn" onClick={saveMeme}>
+            Download
           </button>
         </div>
 
@@ -131,7 +161,7 @@ const MemeGenerator = () => {
             className="meme-text"
             style={{ fontSize: `${forms.textSize}px` }}
           >
-            Top text: {forms.topText}
+            {forms.topText}
           </p>
 
           <p
@@ -139,7 +169,7 @@ const MemeGenerator = () => {
             className="meme-text"
             style={{ fontSize: `${forms.textSize}px` }}
           >
-            Bottom text: {forms.bottomText}
+            {forms.bottomText}
           </p>
 
           <img
@@ -150,12 +180,13 @@ const MemeGenerator = () => {
             alt="meme"
           />
         </div>
+
         <Memu allMemes={JSON.stringify(memes)} sm={selectMeme} />
       </div>
     );
   } else {
     return (
-      <div>
+      <div className="loading-div">
         <h1>LOADING...</h1>
       </div>
     );
